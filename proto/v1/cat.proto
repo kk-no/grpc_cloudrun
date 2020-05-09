@@ -1,0 +1,24 @@
+syntax = "proto3";
+package example;
+
+option go_package = "cloudrun/gen/go/proto/v1";
+
+import "google/api/annotations.proto";
+
+service Cat {
+  rpc GetMyCat (GetMyCatRequest) returns (MyCatResponse) {
+    option (google.api.http) = {
+        get: "/cat/get"
+    };
+  }
+}
+
+message GetMyCatRequest {
+  string name = 1;
+  string kind = 2;
+}
+
+message MyCatResponse {
+  string name = 1;
+  string kind = 2;
+}
