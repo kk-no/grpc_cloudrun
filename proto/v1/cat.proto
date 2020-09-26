@@ -8,14 +8,13 @@ import "google/api/annotations.proto";
 service Cat {
   rpc GetMyCat (GetMyCatRequest) returns (MyCatResponse) {
     option (google.api.http) = {
-        get: "/cat/get"
+        get: "/cat/{name}"
     };
   }
 }
 
 message GetMyCatRequest {
   string name = 1;
-  string kind = 2;
 }
 
 message MyCatResponse {

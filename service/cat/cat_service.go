@@ -1,4 +1,4 @@
-package service
+package cat
 
 import (
 	pb "cloudrun/gen/go/proto/v1"
@@ -9,16 +9,15 @@ import (
 type MyCatService struct{}
 
 func (s *MyCatService) GetMyCat(ctx context.Context, message *pb.GetMyCatRequest) (*pb.MyCatResponse, error) {
-	message.Name = "tama"
-	switch message.Name {
+	switch name := message.GetName(); name {
 	case "tama":
 		return &pb.MyCatResponse{
-			Name: "tama",
+			Name: name,
 			Kind: "mainecoon",
 		}, nil
 	case "mike":
 		return &pb.MyCatResponse{
-			Name: "mike",
+			Name: name,
 			Kind: "Norwegian Forest Cat",
 		}, nil
 	}
